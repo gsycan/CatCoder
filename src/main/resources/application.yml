@@ -1,0 +1,14 @@
+spring:
+
+  # 配置mysql数据集信息，否则启动启动时发现有mysql注解而spring资源文件中没有相关数据库配置信息就会报错找不到mysql的url等信息
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/compass?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 123456
+
+  # 解决Spring Boot 2.6.7 版本和 springfox 3.0.0 版本不兼容，启动的时候直接就报错 ‘ Failed to start bean 'documentationPluginsBootstrapper'; nested exception is java.lang.NullPointerException’
+  #  解决方案地址：https://github.com/springfox/springfox/issues/3462
+  mvc:
+    path match:
+      matching-strategy: ANT_PATH_MATCHER
