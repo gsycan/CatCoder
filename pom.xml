@@ -62,10 +62,18 @@
 		</dependency>
 
 		<!-- Swagger 前后端调试自动接口工具-->
+<!--		<dependency>-->
+<!--			<groupId>io.springfox</groupId>-->
+<!--			<artifactId>springfox-boot-starter</artifactId>-->
+<!--			<version>3.0.0</version>-->
+<!--		</dependency>-->
+
+		<!-- 使用Knife4j美化Swagger 不需要再引入 springfox-boot-starter了，因为 Knife4j 的 starter 里面已经加入过了-->
 		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-boot-starter</artifactId>
-			<version>3.0.0</version>
+			<groupId>com.github.xiaoymin</groupId>
+			<artifactId>knife4j-spring-boot-starter</artifactId>
+			<!--在引用时请在maven中央仓库搜索3.X最新版本号-->
+			<version>3.0.2</version>
 		</dependency>
 
 	</dependencies>

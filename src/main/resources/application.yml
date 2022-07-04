@@ -1,5 +1,4 @@
 spring:
-
   # 配置mysql数据集信息，否则启动启动时发现有mysql注解而spring资源文件中没有相关数据库配置信息就会报错找不到mysql的url等信息
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
