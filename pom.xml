@@ -58,7 +58,15 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
+<!--			<scope>runtime</scope>-->
 			<version>8.0.28</version>
+		</dependency>
+
+		<!-- druid数据库连接池 监控 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid-spring-boot-starter</artifactId>
+			<version>1.1.23</version>
 		</dependency>
 
 		<!-- Swagger 前后端调试自动接口工具-->
