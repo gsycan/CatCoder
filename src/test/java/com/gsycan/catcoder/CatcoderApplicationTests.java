@@ -1,6 +1,6 @@
 package com.gsycan.catcoder;
 
-import com.gsycan.catcoder.po.User;
+import com.gsycan.catcoder.jpa.po.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

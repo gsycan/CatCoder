@@ -28,3 +28,17 @@ target目录下找到编译生成的完整字节码文件。
 2. 通过 http://localhost:9002/druid/ 地址就可以在浏览器访问 Druid 的监控页面了，用户名和密码是我们在配置文件里指定的 root 和 root
 3. 配置druid数据源的时候之前的数据量连接信息url记得保留
 4. IDEA2021与apache-maven-3.8.6不兼容，所以需要将maven调整为apache-maven-3.8.4就可以了。3.8.4版本maven对于仓库为repositoryv2
+
+2022.07.10
+1. Spring Boot 整合 JPA 。Spring Data 是 Spring 提供的一个操作数据的框架，Spring Data JPA是 Spring Data 下的一个基于 JPA 标准的操作数据的模块。
+。JPA（Java Persistence API）是 Java 亲妈 Sun 公司提出的一套 Java 持久化规范。所谓规范，就是只定义标准，不提供实现。
+2. 需要添加相关pom依赖  spring-boot-starter-data-jpa
+3. Mybatis和SPring Data JPA 对比： 
+   1）MyBatis 是针对SQL 的，上手难度比 Spring Data JPA 面向 JPQL 要稍微容易一些。但在 Intellij IDEA 这种集成开发环境的代码提示下，优势并不大。 
+   2）Spring Data JPA 的资料相对少一些，而 MyBatis 的资料可以说非常全面了，遇到问题基本上都能找到解决方案，另外像 MyBatis-Plus 的出现，在一定程度上增强了 MyBatis 的能力。 
+   3）Spring Data JPA 一开始在动态 SQL 能力上不如 MyBatis，但随着 Spring Boot 和 Spring Data JPA 的无缝衔接，Spring Data JPA 的应用会越来越广泛，事实上，国外用 Spring Data JPA 的就比 MyBatis 的多一些。
+
+4. Spring Data JPA，优点： 
+   1）新项目不用事先设计数据库和表结构，开发过程中可以自动根据实体类生成数据库和表结构，更容易快速迭代。 
+   2）能减少切换数据库带来的改造成本，因为 Spring Data JPA 底层屏蔽了 ORM 框架的差异性；再者不用写原生 SQL 的话，也屏蔽了数据库之间的 SQL 差异性。 
+   3）持久层的代码量更少，维护起来更加简单和方便，更多的时候，只需要维护 entity 和 Respository 接口之间的映射关系就可以了

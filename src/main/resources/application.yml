@@ -5,7 +5,11 @@ spring:
     path match:
       matching-strategy: ANT_PATH_MATCHER
 
-  # 配置mysql数据集信息，否则启动启动时发现有mysql注解而spring资源文件中没有相关数据库配置信息就会报错找不到mysql的url等信息, url填写自己的database名称codingmore
+  jpa:
+#    输出sql语句
+    show-sql: true
+
+  # 基于springJPA协议 配置mysql数据集信息，否则启动启动时发现有mysql注解而spring资源文件中没有相关数据库配置信息就会报错找不到mysql的url等信息, url填写自己的database名称codingmore
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/codingmore?useUnicode=true&characterEncoding=utf8
