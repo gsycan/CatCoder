@@ -42,3 +42,22 @@ target目录下找到编译生成的完整字节码文件。
    1）新项目不用事先设计数据库和表结构，开发过程中可以自动根据实体类生成数据库和表结构，更容易快速迭代。 
    2）能减少切换数据库带来的改造成本，因为 Spring Data JPA 底层屏蔽了 ORM 框架的差异性；再者不用写原生 SQL 的话，也屏蔽了数据库之间的 SQL 差异性。 
    3）持久层的代码量更少，维护起来更加简单和方便，更多的时候，只需要维护 entity 和 Respository 接口之间的映射关系就可以了
+
+2022.07.11
+1. Redis 是使用 C 语言开发的一个高性能键值对数据库，是互联网技术领域使用最为广泛的存储中间件，它是「Remote Dictionary Service」的首字母缩写，也就是「远程字典服务」。 
+   安装redis：https://blog.csdn.net/yangwenxue1989/article/details/88884668?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1-88884668-blog-123835625.pc_relevant_aa&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1-88884668-blog-123835625.pc_relevant_aa&utm_relevant_index=2；
+   安装redis客户端:Another Redis Desktop Manager
+   
+2. 此项目是Spring Boot + Vue 的前后端分离项目，要整合 Redis 的话，最好的方式是使用 Spring Cache，仅仅通过 @Cacheable、@CachePut、@CacheEvict、@EnableCaching 等注解就可以轻松使用 Redis 做缓存了。 
+   1）@EnableCaching  ，开启缓存功能。 
+   2）@Cacheable  ，调用方法前，去缓存中找，找到就返回，找不到就执行方法，并将返回值放到缓存中。 
+   3）@CachePut  ，方法调用前不会去缓存中找，无论如何都会执行方法，执行完将返回值放到缓存中。 
+   4）@CacheEvict  ，清理缓存中的一个或多个记录。 
+   Spring Cache 是 Spring 提供的一套完整的缓存解决方案，虽然它本身没有提供缓存的实现，但它提供的一整套接口、规范、配置、注解等，可以让我们无缝衔接 Redis、Ehcache 等缓存实现。
+   
+3. redis连接池
+   Redis 是基于内存的数据库，本来是为了提高程序性能的，但如果不使用 Redis 连接池的话，建立连接、断开连接就需要消耗大量的时间。 
+   用了连接池，就可以实现在客户端建立多个连接，需要的时候从连接池拿，用完了再放回去，这样就节省了连接建立、断开的时间。 
+   要使用连接池，我们得先了解 Redis 的客户端，常用的有两种：Jedis 和 Lettuce。 
+   - Jedis：Spring Boot 1.5.x 版本时默认的 Redis 客户端，实现上是直接连接 Redis Server，如果在多线程环境下是非线程安全的，这时候要使用连接池为每个 jedis 实例增加物理连接； 
+   - Lettuce：Spring Boot 2.x 版本后默认的 Redis 客户端，基于 Netty 实现，连接实例可以在多个线程间并发访问，一个连接实例不够的情况下也可以按需要增加连接实例。
